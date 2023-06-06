@@ -1,5 +1,7 @@
 package com.example.tmdb.domain
 
+import java.io.Serializable
+
 data class PopularMovies (
     /* Criado apenas para caso de estudo, caso tivesse muitos campos dentro da requisição da api,
     * e houvesse a necessidade de selecionar apenas alguns campos específicos, assim iria criar
@@ -10,5 +12,6 @@ data class PopularMovies (
     val title: String,
     val description: String,
     val voteAverage: Double,
-    val posterPath: String
-)
+    val posterPath: String,
+    val backdropPath: String
+) : Serializable

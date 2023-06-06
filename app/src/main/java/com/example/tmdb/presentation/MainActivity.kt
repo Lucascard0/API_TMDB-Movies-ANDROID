@@ -1,16 +1,25 @@
 package com.example.tmdb.presentation
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tmdb.R
 import com.example.tmdb.adapters.MainAdapter
 import com.example.tmdb.data.remote.MoviesAPI
+import com.example.tmdb.data.remote.dto.PopularMoviesDto
+import com.example.tmdb.databinding.ActivityDescriptionBinding
 import com.example.tmdb.databinding.ActivityMainBinding
 import com.example.tmdb.di.viewModelModule
+import com.example.tmdb.domain.PopularMovies
+import com.example.tmdb.presentation.DescriptionActivity.Companion.titleDescription
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,6 +30,9 @@ class MainActivity : AppCompatActivity() {
     private val mainViewModel: MainViewModel by viewModel()
     private val moviesAPI = MoviesAPI
     private val adapter = MainAdapter{
+        //Toast.makeText(this, "Teste 1", Toast.LENGTH_LONG).show()
+
+        showMovieDetails(it)
 
     }
 
@@ -49,7 +61,15 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.popularMovies.observe(this, Observer { lives ->
             adapter.setLiveList(lives)
+
+            /*binding.recyclerview.setOnClickListener {
+                startActivity(Intent(
+                    this@MainActivity, DescriptionActivity::class.java
+                ))
+            }*/
+
         })
+
     }
 
     override fun onResume() {
@@ -58,10 +78,11 @@ class MainActivity : AppCompatActivity() {
             mainViewModel.getPopularMovies()
         }
     }
-}
 
-/*private fun callPopularMovies(){
-    GlobalScope.launch {
-        mainViewModel.getPopularMovies()
+    private fun showMovieDetails(movie: PopularMovies){
+        val intent = Intent(this, DescriptionActivity::class.java)
+
+        intent.putExtra(titleDescription, movie)
+        startActivity(intent)
     }
-}*/
+}

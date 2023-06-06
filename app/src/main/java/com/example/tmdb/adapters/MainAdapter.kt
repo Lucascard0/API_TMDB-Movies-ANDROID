@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.tmdb.R
 import com.example.tmdb.data.remote.dto.PopularMoviesDto
+import com.example.tmdb.databinding.ActivityDescriptionBinding
 import com.example.tmdb.databinding.ResItemLiveBinding
 import com.example.tmdb.domain.PopularMovies
 import com.example.tmdb.presentation.MainViewModel
@@ -17,6 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainAdapter(private val onItemClicked: (PopularMovies) -> Unit) :
     RecyclerView.Adapter<MainViewHolder>() {
 
+   // lateinit var onItemClicked : DetailMovies
     private var lives = mutableListOf<PopularMovies>()
 
     fun setLiveList(lives: List<PopularMovies>){
@@ -45,7 +47,7 @@ class MainViewHolder(val binding: ResItemLiveBinding) : RecyclerView.ViewHolder(
 
     fun bind(live: PopularMovies, onItemClicked: (PopularMovies) -> Unit){
         binding.title.text = live.title
-        binding.overview.text = live.description
+        //binding.overview.text = live.description
         binding.posterPath.toString()
 
         val requestOptions = RequestOptions().placeholder(R.drawable.ic_launcher_background)
@@ -54,7 +56,7 @@ class MainViewHolder(val binding: ResItemLiveBinding) : RecyclerView.ViewHolder(
         Glide.with(itemView.context).applyDefaultRequestOptions(requestOptions)
             .load("https://image.tmdb.org/t/p/original/" + live.posterPath).into(binding.posterPath)
 
-        itemView.setOnClickListener {
+        binding.root.setOnClickListener {
             onItemClicked(live)
         }
     }

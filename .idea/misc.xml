@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/lucas/AndroidStudioProjects/TMDB/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2405" />
+        <entry key="..\:/Users/lucas/AndroidStudioProjects/TMDB/app/src/main/res/layout/activity_description.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/lucas/AndroidStudioProjects/TMDB/app/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
-        <entry key="..\:/Users/lucas/AndroidStudioProjects/TMDB/app/src/main/res/layout/res_item_live.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/lucas/AndroidStudioProjects/TMDB/app/src/main/res/layout/description_movies.xml" value="0.33" />
+        <entry key="..\:/Users/lucas/AndroidStudioProjects/TMDB/app/src/main/res/layout/res_item_live.xml" value="0.33" />
       </map>
     </option>
   </component>

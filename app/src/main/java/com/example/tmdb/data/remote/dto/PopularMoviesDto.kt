@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class PopularMoviesDto(
 
     //Definindo os campos que serão requisitados no JSON
-    //Como o nome da variável declara é diferente da no formato JSON, utilizamos o SerializedName para informar isto
+    //Como o nome da variável declarada é diferente da no formato JSON, utilizamos o SerializedName para informar isto
     val id: Long,
     val title: String,
     val overview: String,
@@ -15,7 +15,10 @@ data class PopularMoviesDto(
     @SerializedName("vote_average")
     val voteAverage: Double,
     @SerializedName("poster_path")
-    val posterPath: String
+    val posterPath: String,
+    @SerializedName("backdrop_path")
+    val backdropPath: String,
+
 ) {
     fun toPopularMovies() : PopularMovies{
         return PopularMovies(
@@ -24,7 +27,8 @@ data class PopularMoviesDto(
             description = overview,
             voteAverage = voteAverage,
             posterPath = posterPath,
-
+            backdropPath = backdropPath
         )
+
     }
 }
